@@ -1,0 +1,13 @@
+version: "3"
+services:
+  web:
+    build: .
+    command: npm start    
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./lib:/usr/src/app/lib
+    networks:
+      - webnet
+networks:
+  webnet:
