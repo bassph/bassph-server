@@ -1,10 +1,13 @@
 
 import express from 'express'
+import helmet from 'helmet'
+import cors from 'cors'
 import methodOverride from 'method-override'
 import apiRouter from './routers/apiRouter'
 
 const app = express()
-
+app.use(cors())
+app.use(helmet())
 app.use([express.json(), express.urlencoded({ extended:true })])
 app.use(methodOverride())
 
