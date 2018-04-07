@@ -1,3 +1,4 @@
+import { cleanObject } from '../../common/utils'
 export const transform = (req) => {
     console.log(req)
     if("connectivity" in req) {
@@ -69,5 +70,5 @@ export const transform = (req) => {
         version: req.version,
     }
 
-    return scanResult
+    return cleanObject(scanResult)
 }
