@@ -1,0 +1,1 @@
+sh -ac ' . ./env.list; npm start'
