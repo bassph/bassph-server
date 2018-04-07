@@ -2,6 +2,7 @@
 import express from 'express'
 import methodOverride from 'method-override'
 import apiRouter from './routers/apiRouter'
+import { serverPort } from './config'
 
 const app = express()
 
@@ -19,6 +20,6 @@ app.use(function(req, res, next){
   res.status(404).send('404', { url: req.originalUrl })
 })
 
-app.listen(8080)
+app.listen(serverPort)
 
 export default app
