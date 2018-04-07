@@ -1,4 +1,3 @@
-
 import crypto from 'crypto'
 /*
  * Store submitted scanResult

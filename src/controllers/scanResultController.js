@@ -10,7 +10,8 @@ export class ScanResultController {
     post(req, res) {
         let scanResult = scanResultMapper.transform(req.body)
         scanResult.ipAddress = req.ip
-        res.send(this.storeScanResult.execute(scanResult))
+        this.storeScanResult.execute(scanResult)
+            .subscribe(scanResult => res.send(scanResult))
     }
 
     get(req, res) {
