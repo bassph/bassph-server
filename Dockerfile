@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM node:alpine
 
 LABEL Melby Baldove <melqbaldove@gmail.com>
 
