@@ -1,2 +1,6 @@
 node_modules
 npm-debug.log
+lib
+run-*.sh
+docker-*.sh
+env.list
