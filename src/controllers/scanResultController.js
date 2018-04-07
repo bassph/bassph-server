@@ -1,7 +1,19 @@
-exports.post = (req, res) => {
-    res.send(req.body)
-}
+import autoBind from 'auto-bind'
+import * as scanResultMapper from './mappers/scanResultMapper'
 
-exports.get = (req, res) => {
-    
+export class ScanResultController {
+    constructor({ storeScanResult }) {
+        this.storeScanResult = storeScanResult
+        autoBind(this)        
+    }
+
+    post(req, res) {
+        let scanResult = scanResultMapper.transform(req.body)
+        scanResult.ipAddress = req.ip
+        res.send(this.storeScanResult.execute(scanResult))
+    }
+
+    get(req, res) {
+
+    }
 }

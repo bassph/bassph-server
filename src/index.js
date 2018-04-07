@@ -3,7 +3,7 @@ import express from 'express'
 import methodOverride from 'method-override'
 import apiRouter from './routers/apiRouter'
 
-var app = module.exports = express()
+const app = express()
 
 app.use([express.json(), express.urlencoded({ extended:true })])
 app.use(methodOverride())
@@ -20,3 +20,5 @@ app.use(function(req, res, next){
 })
 
 app.listen(8080)
+
+export default app
