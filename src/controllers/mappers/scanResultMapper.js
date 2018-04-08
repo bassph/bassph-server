@@ -11,7 +11,8 @@ export const transform = (req) => {
             state: req.connectivity.state,
             subType: req.connectivity.subType,
             subTypeName: req.connectivity.subTypeName,
-            type: req.connectivity.type
+            type: req.connectivity.type,
+            typeName: req.connectivity.typeName
         }
     }
     if("device" in req) {
