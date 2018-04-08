@@ -48,7 +48,7 @@ export const transform = (req) => {
             time: req.location.mTime
         }
     }
-    if("cellTower" in req) {
+    if("networkInfo" in req) {
         var cellTower = {
             cid: req.networkInfo.cid,
             lac: req.networkInfo.lac,
