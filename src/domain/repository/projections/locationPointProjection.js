@@ -4,8 +4,10 @@ export const projectSingle = (scanResult) => {
         signal: scanResult.signal,
         typeName: scanResult.connectivity.typeName,
         label: scanResult.operator,
-        latitude: scanResult.location.latitude,
-        longitude: scanResult.location.longitude
+        loc: {
+            lat: scanResult.location.latitude,
+            lng: scanResult.location.longitude
+        }
     }
 }
 
