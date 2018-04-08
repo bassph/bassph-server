@@ -11,4 +11,3 @@ container
     .register(repositoryModule.scanResultRepositoryProvider)
     .register(repositoryModule.scanResultStoreProvider)
 
-

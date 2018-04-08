@@ -1,10 +1,10 @@
-
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import methodOverride from 'method-override'
 import apiRouter from './routers/apiRouter'
 import { serverPort } from './config'
+import * as db from './infrastructure/db'
 
 const app = express()
 
@@ -24,6 +24,10 @@ app.use((req, res, next) => {
   res.status(404).send({ url: req.originalUrl })
 })
 
-app.listen(serverPort)
+db.connect((err) => {
+  if (err) console.log('cant connect to db')
+  
+  app.listen(serverPort)
+})
 
 export default app
