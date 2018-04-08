@@ -7,7 +7,10 @@ export const container = createContainer()
 
 container
     .register(controllerModule.scanResultControllerProvider)
-    .register(interactorModule.storeScanResultProvider)    
+    .register(controllerModule.locationPointControllerProvider)
+    .register(interactorModule.storeScanResultProvider)
+    .register(interactorModule.showRecentScanResultLocationsProvider)
     .register(repositoryModule.scanResultRepositoryProvider)
+    .register(repositoryModule.locationPointRepositoryProvider)
     .register(repositoryModule.scanResultStoreProvider)
 
