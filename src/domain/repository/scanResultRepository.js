@@ -13,8 +13,8 @@ export class ScanResultRepository {
         return this.scanResultStore.save(scanResult)
     }
 
-    getAll() {
-        return this.scanResultStore.getAll()
+    getAll(request) {
+        return this.scanResultStore.getAll(request)
     }
 }
 

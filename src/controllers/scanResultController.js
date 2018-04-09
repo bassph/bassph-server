@@ -22,7 +22,7 @@ export class ScanResultController {
     }
 
     get(req, res) {
-        this.showScanResults.execute()
+        this.showScanResults.execute({ afterEpoch: req.query.afterEpoch })
             .subscribe(scanResults => {
                 if(req.query._format == 'csv') {
                     res.contentType('text/csv')

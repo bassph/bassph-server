@@ -3,7 +3,7 @@ export class ShowScanResults {
         this.scanResultRepository = scanResultRepository
     }
 
-    execute() {
-        return this.scanResultRepository.getAll()
+    execute(request) {
+        return this.scanResultRepository.getAll(request)
     }
 }

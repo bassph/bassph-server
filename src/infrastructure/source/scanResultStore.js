@@ -10,9 +10,14 @@ export class ScanResultStore {
         })
     }
 
-    getAll() {
+    getAll({ afterEpoch }) {
         let c = scanResultCollection()
-        return Rx.Observable.from(c.find({}).toArray())
+        let query = {}
+        if(afterEpoch) {
+            query.dateAdded = { $gte: parseInt(afterEpoch) }
+            console.log(query)
+        }
+        return Rx.Observable.from(c.find(query).toArray())
     }
 
     findLatest(count) {
