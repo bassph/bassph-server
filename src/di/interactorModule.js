@@ -1,4 +1,4 @@
-import { asClass, Lifetime } from 'awilix'
+import { asClass } from 'awilix'
 import { StoreScanResult } from '../domain/interactors/StoreScanResult'
 import { ShowRecentScanResultLocations } from '../domain/interactors/ShowRecentScanResultLocations'
 

@@ -5,10 +5,10 @@ import crypto from 'crypto'
  * Mask last digits of IMEI before storing
  */
 export class StoreScanResult {
-    constructor({ scanResultRepository }) {
+    constructor({ scanResultRepository, cellTowerRepository }) {
         this.scanResultRepo = scanResultRepository
     }
-    
+
     execute(scanResult) {
         scanResult.imei = maskImei(scanResult.imei)
         return this.scanResultRepo.save(scanResult)

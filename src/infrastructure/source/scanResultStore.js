@@ -3,16 +3,15 @@ import * as db from '../db'
 
 export class ScanResultStore {
     save(scanResult) {
-        let c = scanResultsCollection()
+        let c = scanResultCollection()
         scanResult.dateAdded = Date.now()
         return Rx.Observable.from(c.insertOne(scanResult)).map(result => {
-            console.log(result.ops[0])
             return result.ops[0]
         })
     }
 
     findLatest(count) {
-        let c = scanResultsCollection()
+        let c = scanResultCollection()
         let queryObservable = 
             c.find({})
             .sort({"dateAdded": -1})
@@ -22,6 +21,6 @@ export class ScanResultStore {
     }
 }
 
-const scanResultsCollection = () => {
+const scanResultCollection = () => {
     return db.get().collection('scanresults')
 }

@@ -13,11 +13,6 @@ app.use(helmet())
 app.use([express.json(), express.urlencoded({ extended:true })])
 app.use(methodOverride())
 
-app.use((req, res, next) => {
-  console.log('Time:', Date.now())
-  next()
-})
-
 app.use('/api', apiRouter)
 
 app.use((req, res, next) => {

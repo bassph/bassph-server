@@ -1,6 +1,5 @@
 import { cleanObject } from '../../common/utils'
 export const transform = (req) => {
-    console.log(req)
     if("connectivity" in req) {
         var connectivity = {
             available: req.connectivity.available,
