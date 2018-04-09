@@ -13,6 +13,7 @@ container
     .register(interactorModule.storeScanResultProvider)
     .register(interactorModule.showRecentScanResultLocationsProvider)
     .register(interactorModule.showDailyDataProvider)
+    .register(interactorModule.showScanResultsProvider)
     .register(repositoryModule.scanResultRepositoryProvider)
     .register(repositoryModule.cellTowerRepositoryProvider)
     .register(repositoryModule.locationPointRepositoryProvider)

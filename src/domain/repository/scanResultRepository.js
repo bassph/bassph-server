@@ -12,6 +12,10 @@ export class ScanResultRepository {
         }
         return this.scanResultStore.save(scanResult)
     }
+
+    getAll() {
+        return this.scanResultStore.getAll()
+    }
 }
 
 const isValidCellTower = (cellTower) => {

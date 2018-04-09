@@ -10,6 +10,11 @@ export class ScanResultStore {
         })
     }
 
+    getAll() {
+        let c = scanResultCollection()
+        return Rx.Observable.from(c.find({}).toArray())
+    }
+
     findLatest(count) {
         let c = scanResultCollection()
         let queryObservable =
