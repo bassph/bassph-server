@@ -12,12 +12,46 @@ export class ScanResultStore {
 
     findLatest(count) {
         let c = scanResultCollection()
-        let queryObservable = 
+        let queryObservable =
             c.find({})
-            .sort({"dateAdded": -1})
-            .limit(count)
-            .toArray()
+                .sort({ "dateAdded": -1 })
+                .limit(count)
+                .toArray()
         return Rx.Observable.from(queryObservable)
+    }
+
+    findSampleDataFor(carrier) {
+        let c = scanResultCollection()
+        let todayStart = Date.now() - (Date.now() % (1000 * 60 * 60 * 24))
+        let todayEnd = Date.now() - (Date.now() % (1000 * 60 * 60 * 24)) + 1000 * 60 * 60 * 24
+        let match = {
+            "cellTower.address": { $exists: true },
+            dateAdded: {
+                $gte: todayStart,
+                $lt: todayEnd
+            }
+        }
+        if(null != carrier) {
+            match["connectivity.extraInfo"] = carrier
+        }
+        let query = [
+            {
+                $match: match
+            },
+            {
+                $group: {
+                    _id: "$cellTower.address",
+                    operator: { $first: "$operator" },
+                    bandwidth: { $first: "$bandwidth" },
+                    dateAdded: { $first: "$dateAdded" }
+                }
+            },
+            {
+                $sample: { size: 10 }
+            }
+        ]
+
+        return Rx.Observable.from(c.aggregate(query).toArray())
     }
 }
 
