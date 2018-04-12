@@ -2,11 +2,11 @@ import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import methodOverride from 'method-override'
-import apiRouter from './routers/apiRouter'
+import apiRouter from './routers/api'
 import { serverPort } from './config'
 import * as db from './infrastructure/db'
 
-const app = express()
+const app = module.exports = express()
 
 app.use(cors())
 app.use(helmet())
@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 
 db.connect((err) => {
   if (err) console.log('cant connect to db')
-  
+
   app.listen(serverPort)
 })
 
