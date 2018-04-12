@@ -1,16 +1,16 @@
 import { asClass } from 'awilix'
-import ScanResultController from '../controllers/ScanResult'
-import LocationPointController from '../controllers/LocationPoint'
-import DailyDataController from '../controllers/DailyData';
+import scanResultController from '../controllers/scanResultController'
+import locationPointController from '../controllers/locationPointController'
+import dailyDataController from '../controllers/dailyDataController'
 
 export const scanResultControllerProvider = {
-    scanResultController: asClass(ScanResultController).singleton()
+    scanResultController: asClass(scanResultController).singleton()
 }
 
 export const locationPointControllerProvider = {
-    locationPointController: asClass(LocationPointController).singleton()
+    locationPointController: asClass(locationPointController).singleton()
 }
 
 export const dailyDataControllerProvider = {
-    dailyDataController: asClass(DailyDataController).singleton()
+    dailyDataController: asClass(dailyDataController).singleton()
 }

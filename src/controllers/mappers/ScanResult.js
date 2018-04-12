@@ -1,6 +1,6 @@
 import { cleanObject } from '../../common/utils'
 import { Parser } from 'json2csv'
-import scanResultCsvFieldMapping from './scanResultCsvFieldMapping.json'
+import scanResultCsvFieldMapping from './scanResultCsvFieldMapping'
 
 export function transform(req) {
     if ("connectivity" in req) {

@@ -2,9 +2,9 @@ import express from 'express'
 import { container } from '../di/container'
 
 const router = express.Router()
-const ScanResultController = container.resolve('ScanResultController')
-const LocationPointController = container.resolve('LocationPointController')
-const DailyDataController = container.resolve('DailyDataController')
+const ScanResultController = container.resolve('scanResultController')
+const LocationPointController = container.resolve('locationPointController')
+const DailyDataController = container.resolve('dailyDataController')
 
 router.post('/scanresults', ScanResultController.post)
 router.get('/scanresults', ScanResultController.get)

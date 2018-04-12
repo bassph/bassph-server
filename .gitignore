@@ -61,5 +61,4 @@ typings/
 .next
 
 .vscode
-# bassph-server
-lib/
+.idea/
