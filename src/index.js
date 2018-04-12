@@ -17,7 +17,7 @@ app.use(helmet())
 app.use([express.json(), express.urlencoded({ extended:true })])
 app.use(methodOverride())
 
-app.use('/api', api)
+app.use('/api', apiRouter)
 
 app.use(error404Handler)
 
