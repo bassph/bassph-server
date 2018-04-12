@@ -60,4 +60,9 @@ typings/
 # next.js build output
 .next
 
+<<<<<<< HEAD
 .vscode
+=======
+# bassph-server
+lib/
+>>>>>>> f4794fd46f2dca4a1d122b9094083603e607be55

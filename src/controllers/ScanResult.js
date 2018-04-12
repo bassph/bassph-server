@@ -1,7 +1,7 @@
 import autoBind from 'auto-bind'
-import * as scanResultMapper from './mappers/scanResultMapper'
+import * as ScanResultMapper from './mappers/ScanResult'
 
-export class ScanResultController {
+class ScanResultController {
     constructor({ storeScanResult, showScanResults }) {
         this.storeScanResult = storeScanResult
         this.showScanResults = showScanResults
@@ -9,7 +9,7 @@ export class ScanResultController {
     }
 
     post(req, res) {
-        let scanResult = scanResultMapper.transform(req.body)
+        let scanResult = ScanResultMapper.transform(req.body)
         scanResult.ipAddress = req.ip
         this.storeScanResult.execute(scanResult)
             .subscribe(scanResult => {
@@ -27,7 +27,7 @@ export class ScanResultController {
                 if(req.query._format == 'csv') {
                     res.contentType('text/csv')
                     res.header('Content-Disposition', 'attachment; filename=scan_results.csv')
-                    res.send(scanResultMapper.transformToCsv(scanResults))
+                    res.send(ScanResultMapper.transformToCsv(scanResults))
                 }
                 else {
                     res.send(scanResults)
@@ -35,3 +35,5 @@ export class ScanResultController {
             })
     }
 }
+
+export default ScanResultController
