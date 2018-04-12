@@ -1,6 +1,6 @@
 import autoBind from 'auto-bind'
 
-export class DailyDataController {
+class DailyDataController {
     constructor({ showDailyData }) {
         this.showDailyData = showDailyData
         autoBind(this)
@@ -13,3 +13,5 @@ export class DailyDataController {
                 err => res.send(err))
     }
 }
+
+export default DailyDataController

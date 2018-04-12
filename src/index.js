@@ -6,7 +6,11 @@ import apiRouter from './routers/api'
 import { serverPort } from './config'
 import * as db from './infrastructure/db'
 
-const app = module.exports = express()
+function error404Handler(req, res) {
+  res.status(404).send({ url: req.originalUrl })
+}
+
+const app = express()
 
 app.use(cors())
 app.use(helmet())
@@ -15,9 +19,7 @@ app.use(methodOverride())
 
 app.use('/api', apiRouter)
 
-app.use((req, res, next) => {
-  res.status(404).send({ url: req.originalUrl })
-})
+app.use(error404Handler)
 
 db.connect((err) => {
   if (err) console.log('cant connect to db')
