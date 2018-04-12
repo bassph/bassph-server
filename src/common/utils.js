@@ -4,14 +4,15 @@ import validator from 'validator'
  * Melby Baldove
  * melqbaldove@gmail.com
  */
-export const clean = (str) => {
-    if (str != undefined) {
-        const low_stripped = validator.stripLow(str + '') // coerce intro string
-        return validator.escape(low_stripped)
+export function clean(str) {
+    if (str === null || typeof str === 'undefined') {
+        return null;
     }
+    const low_stripped = validator.stripLow(str + '') // coerce intro string
+    return validator.escape(low_stripped)
 }
 
-export const cleanObject = (obj) => {
+export function cleanObject(obj) {
     for (let prop in obj) {
         if (obj[prop] !== null && typeof obj[prop] === 'object') {
             cleanObject(obj[prop])

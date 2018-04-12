@@ -1,6 +1,6 @@
 import autoBind from 'auto-bind'
 
-export class LocationPointController {
+class LocationPointController {
     constructor({ showRecentScanResultLocations }) {
         this.showRecentScanResultLocations = showRecentScanResultLocations
         autoBind(this)        
@@ -15,3 +15,5 @@ export class LocationPointController {
             })
     }
 }
+
+export default LocationPointController
