@@ -5,4 +5,3 @@ module.exports = {
   lookupApiUrl: 'https://ap1.unwiredlabs.com/v2/process.php',
   lookupToken: '9ca648def92237'
 }
-
