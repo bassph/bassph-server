@@ -18,14 +18,16 @@ export class StoreScanResult {
 const maskImei = (imei) => {
     const hash = crypto.createHash('sha256');
     let maskedImei = ''
-
+    const secret = 'abcdefg';
     try {
         if (imei >= 15) {
             let sub = imei.substring(0, 8)
             // hash last 6 digits
-            let hashed =
-                hash.update(imei.substring(8, 14))
-                    .digest('hex')
+            let hashed = 
+            crypto.createHmac('sha256', secret)
+                   .update(imei.substring(8, 14))
+                   .digest('hex')
+
             hash.end()
             maskedImei = sub + hashed + imei[14]
         }

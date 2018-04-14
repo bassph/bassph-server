@@ -1,4 +1,4 @@
-const CONFIG = {
+module.exports = {
   serverPort: process.env.SERVER_PORT,
   mongoUrl: 'mongodb://localhost:27017/bassdb',
   dbName: 'bassdb',
@@ -6,4 +6,3 @@ const CONFIG = {
   lookupToken: '9ca648def92237'
 }
 
-export default CONFIG
