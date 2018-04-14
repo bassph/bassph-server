@@ -22,7 +22,10 @@ app.use('/api', apiRouter)
 app.use(error404Handler)
 
 db.connect((err) => {
-  if (err) console.log('cant connect to db')
+  if (err) {
+    console.log('cant connect to db')
+    console.log(err)
+  }
   
   app.listen(serverPort)
 })
