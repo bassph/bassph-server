@@ -4,7 +4,7 @@ import crypto from 'crypto'
  * 
  * Mask last digits of IMEI before storing
  */
-export class StoreScanResult {
+class StoreScanResult {
     constructor({ scanResultRepository, cellTowerRepository }) {
         this.scanResultRepo = scanResultRepository
     }
@@ -16,19 +16,19 @@ export class StoreScanResult {
 }
 
 const maskImei = (imei) => {
-    const hash = crypto.createHash('sha256');
+    //const hash = crypto.createHash('sha256');
     let maskedImei = ''
     const secret = 'abcdefg';
     try {
-        if (imei >= 15) {
+        if (imei.length >= 15) {
             let sub = imei.substring(0, 8)
             // hash last 6 digits
-            let hashed = 
-            crypto.createHmac('sha256', secret)
-                   .update(imei.substring(8, 14))
-                   .digest('hex')
+            let hashed =
+                crypto.createHmac('sha256', secret)
+                    .update(imei.substring(8, 14))
+                    .digest('hex')
 
-            hash.end()
+            //hash.end()
             maskedImei = sub + hashed + imei[14]
         }
         else {
@@ -36,9 +36,10 @@ const maskImei = (imei) => {
         }
     }
     catch (err) {
-        console.log(err)
         maskedImei = undefined
     }
 
     return maskedImei
 }
+
+export default StoreScanResult;
