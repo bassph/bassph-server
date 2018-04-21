@@ -10,7 +10,7 @@ describe('Interactors: StoreScanResult', () => {
                 save: scanResult => _response = scanResult
             };
             const scanResult = { imei: null }
-const storeScanResult = new StoreScanResult({ scanResultRepository });
+            const storeScanResult = new StoreScanResult({ scanResultRepository });
             const response = storeScanResult.execute(scanResult);
             expect(response.imei).to.be.undefined;
             expect(response.imei === null).to.be.false;
