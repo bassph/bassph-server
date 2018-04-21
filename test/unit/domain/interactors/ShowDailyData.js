@@ -43,4 +43,21 @@ describe('Interactors: ShowDailyData', () => {
 
         });
     });
+
+    describe('Get Daily Data Based of unknown Provider', () => {
+        it('should retun No Data', () => {
+            const dailyDataRepository = {
+                fetch: td.function(carrier),
+            };
+
+            const carrier = 'batman'
+
+            const expectedResponse = { message: "no data" };
+
+            const showDailyData = new ShowDailyData({ dailyDataRepository });
+            const response = showDailyData.execute(carrier);
+            expect(response).to.be.eql(expectedResponse);
+
+        });
+    });
 });
