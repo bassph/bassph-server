@@ -1,7 +1,7 @@
 module.exports = {
   serverPort: process.env.SERVER_PORT,
-  mongoUrl: 'mongodb://localhost:27017/bassdb',
-  dbName: 'bassdb',
-  lookupApiUrl: 'https://ap1.unwiredlabs.com/v2/process.php',
-  lookupToken: '9ca648def92237'
+  mongoUrl: process.env.MONGO_CONNECTION_URL,
+  dbName: process.env.MONGO_DB_NAME,
+  lookupApiUrl: process.env.UNWIRED_API_URL,
+  lookupToken: process.env.UNWIRED_API_TOKEN
 }

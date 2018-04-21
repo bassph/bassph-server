@@ -44,4 +44,4 @@ export class CellTowerRepository {
     }
 }
 
-const shouldLookup = (result) => null == result || result.status == 'Pending'
+const shouldLookup = (result) => !result || result.status == 'Pending'
