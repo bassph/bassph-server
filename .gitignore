@@ -1,3 +1,6 @@
+# tdd reports
+mochawesome-report
+
 # Logs
 logs
 *.log
