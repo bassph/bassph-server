@@ -3,7 +3,7 @@ import { carrierMappings } from '../carrierMappings'
  * Show some daily scan result data
  * for specified carrier
  */
-export class ShowDailyData {
+class ShowDailyData {
     constructor({ dailyDataRepository }) {
         this.dailyDataRepository = dailyDataRepository
     }
@@ -12,4 +12,6 @@ export class ShowDailyData {
         return this.dailyDataRepository.fetch(carrierMappings[carrier])
     }
 }
+
+export default ShowDailyData
 
