@@ -7,7 +7,8 @@
     "start": "node lib/index.js",
     "build": "babel src/ -d lib/",
     "prepublish": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test-unit",
+    "test-unit": "mocha --opts test/unit/mocha.opts test/unit/**/*.js",
     "flow": "flow"
   },
   "author": "BASS PH",
@@ -17,9 +18,13 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
+    "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "flow-bin": "^0.69.0",
-    "nodemon": "^1.17.3"
+    "mocha": "^5.1.1",
+    "mochawesome": "^3.0.2",
+    "nodemon": "^1.17.3",
+    "testdouble": "^3.7.0"
   },
   "dependencies": {
     "awilix": "^3.0.6",
