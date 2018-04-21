@@ -9,7 +9,11 @@ class ShowDailyData {
     }
 
     execute(carrier) {
-        return this.dailyDataRepository.fetch(carrierMappings[carrier])
+        const provider = carrierMappings[carrier];
+        const dailyData = provider
+            ? this.dailyDataRepository.fetch(provider)
+            : { message: "no data" }
+        return dailyData
     }
 }
 
