@@ -1,4 +1,4 @@
 --require ./test/unit/helpers.js
---reporter spec
+--reporter mochawesome
 --compilers js:babel-core/register
 --slow 5000
