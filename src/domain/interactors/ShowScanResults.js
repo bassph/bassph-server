@@ -6,4 +6,8 @@ export class ShowScanResults {
     execute(request) {
         return this.scanResultRepository.getAll(request)
     }
+
+    executeAsStream(request) {
+        return this.scanResultRepository.streamAll(request)
+    }
 }
