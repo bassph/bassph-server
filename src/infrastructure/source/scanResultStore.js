@@ -1,9 +1,12 @@
 import Rx from 'rxjs/Rx'
-import * as db from '../db'
 
 export class ScanResultStore {
+    constructor({persistenceManager}){
+        this.persistenceManager = persistenceManager
+    }
+
     save(scanResult) {
-        let c = scanResultCollection()
+        const c = this._scanResultCollection()
         scanResult.dateAdded = Date.now()
         return Rx.Observable.from(c.insertOne(scanResult)).map(result => {
             return result.ops[0]
@@ -11,7 +14,7 @@ export class ScanResultStore {
     }
 
     getAll({ afterEpoch }) {
-        let c = scanResultCollection()
+        const c = this._scanResultCollection()
         let query = {}
         if(afterEpoch) {
             query.dateAdded = { $gte: parseInt(afterEpoch) }
@@ -21,7 +24,7 @@ export class ScanResultStore {
     }
 
     streamAll({ afterEpoch }) {
-        let c = scanResultCollection()
+        const c = this._scanResultCollection()
         let query = {}
         if(afterEpoch) {
             query.dateAdded = { $gte: parseInt(afterEpoch) }
@@ -31,7 +34,7 @@ export class ScanResultStore {
     }
 
     findLatest(count) {
-        let c = scanResultCollection()
+        const c = this._scanResultCollection()
         let queryObservable =
             c.find({})
                 .sort({ "dateAdded": -1 })
@@ -41,10 +44,10 @@ export class ScanResultStore {
     }
 
     findSampleDataFor(carrier) {
-        let c = scanResultCollection()
-        let todayStart = Date.now() - (Date.now() % (1000 * 60 * 60 * 24))
-        let todayEnd = Date.now() - (Date.now() % (1000 * 60 * 60 * 24)) + 1000 * 60 * 60 * 24
-        let match = {
+        const c = this._scanResultCollection()
+        const todayStart = Date.now() - (Date.now() % (1000 * 60 * 60 * 24))
+        const todayEnd = Date.now() - (Date.now() % (1000 * 60 * 60 * 24)) + 1000 * 60 * 60 * 24
+        const match = {
             "cellTower.address": { $exists: true },
             dateAdded: {
                 $gte: todayStart,
@@ -54,7 +57,7 @@ export class ScanResultStore {
         if(null != carrier) {
             match["connectivity.extraInfo"] = carrier
         }
-        let query = [
+        const query = [
             {
                 $match: match
             },
@@ -73,8 +76,8 @@ export class ScanResultStore {
 
         return Rx.Observable.from(c.aggregate(query).toArray())
     }
-}
 
-const scanResultCollection = () => {
-    return db.get().collection('scanresults')
+    _scanResultCollection(){
+        return this.persistenceManager.get().collection('scanresults')
+    }
 }

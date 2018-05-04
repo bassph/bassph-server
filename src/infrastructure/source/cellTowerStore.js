@@ -1,10 +1,13 @@
 import Rx from 'rxjs/Rx'
-import * as db from '../db'
 
 export class CellTowerStore {
+    constructor({ persistenceManager }) {
+        this.persistenceManager = persistenceManager
+    }
+
     upsert(cellTower) {
-        let c = cellTowerCollection()
-        let query = {
+        const c = this._cellTowerCollection()
+        const query = {
             cid: cellTower.cid,
             lac: cellTower.lac,
             mnc: cellTower.mnc,
@@ -14,11 +17,11 @@ export class CellTowerStore {
     }
 
     get(cellTower) {
-        let c = cellTowerCollection()
+        const c = this._cellTowerCollection()
         return Rx.Observable.from(c.findOne(cellTower))
     }
-}
 
-const cellTowerCollection = () => {
-    return db.get().collection('celltowers')
+    _cellTowerCollection() {
+        return db.get().collection('celltowers')
+    }
 }
