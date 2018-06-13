@@ -22,6 +22,6 @@ export class CellTowerStore {
     }
 
     _cellTowerCollection() {
-        return db.get().collection('celltowers')
+        return this.persistenceManager.get().collection('celltowers')
     }
 }
