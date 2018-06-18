@@ -10,7 +10,7 @@ class LocationPointController {
         this.showRecentScanResultLocations
             .execute()
             .subscribe(locationPoints => {
-                console.log(locationPoints)
+            
                 res.send(locationPoints)
             })
     }

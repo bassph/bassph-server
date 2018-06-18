@@ -9,6 +9,7 @@ class ScanResultController {
 	}
 
 	post(req, res) {
+		console.log(req.body)
 		let scanResult = ScanResultMapper.transform(req.body)
 		scanResult.ipAddress = req.ip
 		this.storeScanResult.execute(scanResult)

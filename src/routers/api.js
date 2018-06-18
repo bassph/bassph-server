@@ -7,6 +7,7 @@ const LocationPointController = container.resolve('locationPointController')
 const DailyDataController = container.resolve('dailyDataController')
 
 router.post('/scanresults', ScanResultController.post)
+router.post('/v2/record', ScanResultController.post)
 router.get('/scanresults', ScanResultController.get)
 router.get('/locationpoints', LocationPointController.getRecentLocationPoints)
 router.get('/dailyData', DailyDataController.get)
