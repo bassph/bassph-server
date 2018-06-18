@@ -1,5 +1,6 @@
 import autoBind from 'auto-bind'
 import * as ScanResultMapper from './mappers/ScanResult'
+import * as csv from 'csv'
 
 class ScanResultController {
 	constructor({ storeScanResult, showScanResults }) {
@@ -24,8 +25,6 @@ class ScanResultController {
 	get(req, res) {
 		res.contentType('text/csv')
 		res.header('Content-Disposition', 'attachment; filename=scan_results.csv')
-		
-		
 		const stream = this.showScanResults.executeAsStream({ afterEpoch: req.query.afterEpoch })
 		ScanResultMapper.streamTransformToCsv(stream, res)
 	}

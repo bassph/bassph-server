@@ -12,7 +12,7 @@ export class ScanResultStore {
             return result.ops[0]
         })
     }
-
+    
     getAll({ afterEpoch }) {
         const c = this._scanResultCollection()
         let query = {}
