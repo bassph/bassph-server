@@ -224,55 +224,55 @@ module.exports = {
 		},
 		{
 			"label": "CELLTOWER_cid",
-			"value": "celltower.cid",
+			"value": "cellTower.cid",
 			"default": "NULL",
 			"stringify": true
 		},
 		{
 			"label": "CELLTOWER_lac",
-			"value": "celltower.lac",
+			"value": "cellTower.lac",
 			"default": "NULL",
 			"stringify": true
 		},
 		{
 			"label": "CELLTOWER_mcc",
-			"value": "celltower.mcc",
+			"value": "cellTower.mcc",
 			"default": "NULL",
 			"stringify": true
 		},
 		{
 			"label": "CELLTOWER_mnc",
-			"value": "celltower.mnc",
+			"value": "cellTower.mnc",
 			"default": "NULL",
 			"stringify": true
 		},
 		{
 			"label": "CELLTOWER_lat",
-			"value": "celltower.lat",
+			"value": "cellTower.lat",
 			"default": "NULL",
 			"stringify": true
 		},
 		{
 			"label": "CELLTOWER_lon",
-			"value": "celltower.lon",
+			"value": "cellTower.lon",
 			"default": "NULL",
 			"stringify": true
 		},
 		{
 			"label": "CELLTOWER_address",
-			"value": "celltower.address",
+			"value": "cellTower.address",
 			"default": "NULL",
 			"stringify": true
 		},
 		{
 			"label": "CELLTOWER_accuracy",
-			"value": "celltower.accuracy",
+			"value": "cellTower.accuracy",
 			"default": "NULL",
 			"stringify": true
 		},
 		{
 			"label": "CELLTOWER_lookupStatus",
-			"value": "celltower.status",
+			"value": "cellTower.status",
 			"default": "NULL",
 			"stringify": true
 		},
