@@ -30,7 +30,11 @@ export class ScanResultStore {
             query.dateAdded = { $gte: parseInt(afterEpoch) }
             console.log(query)
         }
-        return c.find(query).stream()
+        return c.find(query).stream({
+            transform: (scanresult) => {
+                return JSON.stringify(scanresult)
+            }
+        })
     }
 
     findLatest(count) {
