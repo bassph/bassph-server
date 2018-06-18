@@ -12,7 +12,7 @@ export class ScanResultStore {
             return result.ops[0]
         })
     }
-
+    
     getAll({ afterEpoch }) {
         const c = this._scanResultCollection()
         let query = {}
@@ -30,7 +30,11 @@ export class ScanResultStore {
             query.dateAdded = { $gte: parseInt(afterEpoch) }
             console.log(query)
         }
-        return c.find(query).stream()
+        return c.find(query).stream({
+            transform: (scanresult) => {
+                return JSON.stringify(scanresult)
+            }
+        })
     }
 
     findLatest(count) {

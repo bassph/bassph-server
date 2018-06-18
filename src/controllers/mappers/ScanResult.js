@@ -1,5 +1,5 @@
 import { cleanObject } from '../../common/utils'
-import { Parser } from 'json2csv'
+import { Transform } from 'json2csv'
 import scanResultCsvFieldMapping from './scanResultCsvFieldMapping'
 
 export function transform(req) {
@@ -71,12 +71,11 @@ export function transform(req) {
     return cleanObject(scanResult)
 }
 
-export function transformToCsv(scanResults) {
-    // TODO: Implement streaming
+export function streamTransformToCsv(scanResultsStream, outputStream) {
     try {
-        const parser = new Parser(scanResultCsvFieldMapping);
-        const csv = parser.parse(scanResults);
-        return csv
+        const transformOpts = { highWaterMark: 16384, encoding: 'utf-8' };
+        const json2csv = new Transform(scanResultCsvFieldMapping, transformOpts)
+        const processor = scanResultsStream.pipe(json2csv).pipe(outputStream);
     } catch (err) {
         console.error(err);
     }
