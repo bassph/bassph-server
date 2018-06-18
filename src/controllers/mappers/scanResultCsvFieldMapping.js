@@ -49,8 +49,8 @@ module.exports = {
 			"stringify": true
 		},
 		{
-			"label": "CONNECTIVITY_failOver",
-			"value": "connectivity.failOver",
+			"label": "CONNECTIVITY_failover",
+			"value": "connectivity.failover",
 			"default": "NULL",
 			"stringify": true
 		},
