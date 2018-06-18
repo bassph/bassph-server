@@ -73,8 +73,8 @@ export function transform(req) {
 
 export function streamTransformToCsv(scanResultsStream, outputStream) {
     try {
-        const transformOpts = { highWaterMark: 16384, encoding: 'utf-8' };
-        const json2csv = new Transform(scanResultCsvFieldMapping, transformOpts)
+    
+        const json2csv = new Transform(scanResultCsvFieldMapping)
         const processor = scanResultsStream.pipe(json2csv).pipe(outputStream);
     } catch (err) {
         console.error(err);
