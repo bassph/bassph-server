@@ -38,6 +38,7 @@
     "method-override": "^2.3.10",
     "mongodb": "^3.0.5",
     "rxjs": "^5.5.8",
-    "validator": "^9.4.1"
+    "validator": "^9.4.1",
+    "zlib": "^1.0.5"
   }
 }
