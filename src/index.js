@@ -19,7 +19,7 @@ app.use(methodOverride())
 app.use('/api', apiRouter)
 
 app.use(error404Handler)
-
+app.enable('trust proxy')
 app.listen(serverPort)
 
 export default app

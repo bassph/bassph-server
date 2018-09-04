@@ -91,6 +91,12 @@ module.exports = {
 			"stringify": true
 		},
 		{
+			"label": "CONNECTIVITY_ipAddress",
+			"value": (row, field) => (row.ipAddress.substring(0, row.ipAddress.lastIndexOf(".")) + ".X"),
+			"default": "NULL",
+			"stringify": true
+		},
+		{
 			"label": "DEVICE_manufacturer",
 			"value": "device.manufacturer",
 			"default": "NULL",
