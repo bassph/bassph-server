@@ -25,7 +25,7 @@ class ScanResultController {
 
 	get(req, res) {
 		res.contentType('text/csv')
-		res.header('Content-Disposition', 'attachment; filename=scan_results.csv')
+		res.header('Content-Disposition', 'attachment; filename=scan_results.csv.gz')
 		const stream = this.showScanResults.executeAsStream({ afterEpoch: req.query.afterEpoch })
 		ScanResultMapper.streamTransformToCsv(stream, res)
 	}
