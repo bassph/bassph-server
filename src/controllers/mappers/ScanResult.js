@@ -1,7 +1,6 @@
 import { cleanObject } from '../../common/utils'
 import { Transform } from 'json2csv'
 import scanResultCsvFieldMapping from './scanResultCsvFieldMapping'
-import zlib from 'zlib'
 
 export function transform(req) {
     const connectivity = (req.connectivity) ? {
@@ -74,9 +73,9 @@ export function transform(req) {
 
 export function streamTransformToCsv(scanResultsStream, outputStream) {
     try {
-        const gzip = zlib.createGzip();
+    
         const json2csv = new Transform(scanResultCsvFieldMapping)
-        const processor = scanResultsStream.pipe(json2csv).pipe(gzip).pipe(outputStream);
+        const processor = scanResultsStream.pipe(json2csv).pipe(outputStream);
     } catch (err) {
         console.error(err);
     }
