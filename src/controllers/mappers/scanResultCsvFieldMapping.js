@@ -194,7 +194,7 @@ module.exports = {
 		},
 		{
 			"label": "LOCATION_mLatitude",
-			"value": "location.latitude",
+			"value": (row, field) => (row.location.latitude.substring(0, row.location.latitude.indexOf(".") + 6)),
 			"default": "NULL",
 			"stringify": true
 		},
@@ -212,7 +212,7 @@ module.exports = {
 		},
 		{
 			"label": "LOCATION_mLongitude",
-			"value": "location.longitude",
+			"value": (row, field) => (row.location.longitude.substring(0, row.location.longitude.indexOf(".") + 6)),
 			"default": "NULL",
 			"stringify": true
 		},
@@ -290,7 +290,7 @@ module.exports = {
 		},
 		{
 			"label": "LOCATION_epochTime",
-			"value": "dateAdded",
+			"value": (row, field) => (row.dateAdded / (60 * 60 * 1000)>>0) * (60 * 60 * 1000),
 			"default": "NULL",
 			"stringify": true
 		},
