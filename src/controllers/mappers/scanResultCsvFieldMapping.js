@@ -194,7 +194,7 @@ module.exports = {
 		},
 		{
 			"label": "LOCATION_mLatitude",
-			"value": (row, field) => (row.location.latitude.substring(0, row.location.latitude.indexOf(".") + 6)),
+			"value": (row, field) => row.location.latitude != null ? (row.location.latitude.substring(0, row.location.latitude.indexOf(".") + 6)) : "None",
 			"default": "NULL",
 			"stringify": true
 		},
@@ -212,7 +212,7 @@ module.exports = {
 		},
 		{
 			"label": "LOCATION_mLongitude",
-			"value": (row, field) => (row.location.longitude.substring(0, row.location.longitude.indexOf(".") + 6)),
+			"value": (row, field) => row.location.longitude != null ? (row.location.longitude.substring(0, row.location.longitude.indexOf(".") + 6)) : "None",
 			"default": "NULL",
 			"stringify": true
 		},
